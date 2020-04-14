@@ -1,4 +1,4 @@
-from pathlib import Path
+import os
 from time import sleep
 
 from ui.locators.locators import NewCampaignsLocators
@@ -34,7 +34,8 @@ class NewCampaignsPage(BasePage):
         self.find(self.locators.BANNER_TITLE).send_keys("Go to the adventure")
         self.find(self.locators.BANNER_TEXT).send_keys("Do not pass by a unique site!")
 
-        self.find(self.locators.UPLOAD_FILE).send_keys(str(Path("ui/resources/avatar_265008.jpg").resolve()))
+        self.find(self.locators.UPLOAD_FILE).send_keys(
+            os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, 'resources', 'avatar_265008.jpg')))
         sleep(3)
 
         self.click(self.locators.ADD_ADVERT)
